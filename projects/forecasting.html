@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A university machine learning project on multi-horizon temperature forecasting in Bern.">
+  <title>Multi-horizon Weather Forecasting | Giovanni Carta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="case-page forecast-case">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header forecast-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html"><span class="brand-mark">GC</span><span>Giovanni Carta</span></a>
+      <a class="back-link" href="../index.html#projects">← Back to projects</a>
+    </div>
+  </header>
+  <main id="main-content">
+    <section class="forecast-recovery-hero">
+      <div class="container forecast-recovery-hero__grid">
+        <div class="forecast-recovery-hero__copy reveal">
+          <p class="eyebrow">Machine learning · Forecasting · University team project</p>
+          <h1>How does model complexity change as the <span>forecast horizon</span> gets longer?</h1>
+          <p class="forecast-recovery-hero__lead">A supervised machine learning project comparing interpretable and non-linear models for 12-, 24- and 48-hour temperature forecasting in Bern.</p>
+          <div class="forecast-recovery-hero__actions">
+            <a class="button light" href="#forecast-results">Explore the model results <span>↓</span></a>
+          </div>
+        </div>
+        <div class="forecast-recovery-hero__visual reveal delay-1" aria-label="Forecasting logic from station measurements to three prediction horizons">
+          <div class="forecast-recovery-hero__eyebrow">Distributed station signals</div>
+          <svg class="forecast-recovery-hero__chart" viewBox="0 0 520 360" role="img" aria-label="Three forecast paths moving from input signals towards 12, 24 and 48 hour horizons">
+            <defs><linearGradient id="forecastLine" x1="0" x2="1"><stop stop-color="#6de0e9"/><stop offset="1" stop-color="#d9fbff"/></linearGradient></defs>
+            <g class="forecast-recovery-hero__gridlines"><path d="M40 60H480M40 120H480M40 180H480M40 240H480M40 300H480"/><path d="M100 35V320M190 35V320M280 35V320M370 35V320M460 35V320"/></g>
+            <path class="forecast-recovery-hero__path forecast-recovery-hero__path--one" d="M42 245 C85 238 92 172 139 182 S201 236 246 191 S311 115 358 141 S423 107 478 78"/>
+            <path class="forecast-recovery-hero__path forecast-recovery-hero__path--two" d="M42 275 C87 249 112 218 152 232 S214 260 260 226 S328 166 365 179 S430 150 478 139"/>
+            <path class="forecast-recovery-hero__path forecast-recovery-hero__path--three" d="M42 299 C90 281 118 247 158 256 S222 278 269 255 S335 208 374 218 S433 195 478 189"/>
+            <g class="forecast-recovery-hero__points"><circle cx="42" cy="245" r="5"/><circle cx="246" cy="191" r="5"/><circle cx="478" cy="78" r="5"/><circle cx="42" cy="275" r="5"/><circle cx="260" cy="226" r="5"/><circle cx="478" cy="139" r="5"/></g>
+          </svg>
+          <div class="forecast-recovery-hero__horizons" aria-hidden="true"><span>12h</span><span>24h</span><span>48h</span></div>
+          <div class="forecast-recovery-hero__result"><span>Best 12h test MAE</span><strong>≈ 1.51°C</strong><small>Boosting</small></div>
+        </div>
+      </div>
+      <div class="container forecast-recovery-metrics" aria-label="Project scope">
+        <div><strong>10</strong><span>weather stations</span></div><div><strong>7,579</strong><span>training observations</span></div><div><strong>92</strong><span>input features</span></div><div><strong>3</strong><span>forecast horizons</span></div><div><strong>3</strong><span>model families</span></div>
+      </div>
+      <div class="container"><p class="forecast-recovery-disclaimer">This was a university team project developed for the Machine Learning course at the University of Geneva. It was not an operational weather system, an official forecast or work commissioned by MeteoSwiss.</p></div>
+    </section>
+
+    <section id="forecast-question" class="section forecast-recovery-section">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">01 · Forecasting question</p><h2>What does it take to predict local temperature from a distributed weather network?</h2><p>Future temperature in Bern was predicted from 10 Swiss stations and temperature, humidity, radiation, precipitation, pressure, wind, sunshine and temporal variables.</p></div>
+        <div class="forecast-network-map reveal" aria-label="Schematic data network">
+          <div class="forecast-network-map__stations"><span>Basel</span><span>Geneva</span><span>Interlaken</span><span>Sion</span><span>St. Gallen</span><span>Davos</span><span>Zermatt</span><span>Andermatt</span><span>La Dôle</span><span>Lugano</span></div>
+          <div class="forecast-network-map__route"><span>Station measurements</span><i aria-hidden="true"></i><strong>Bern</strong><i aria-hidden="true"></i><b>12h · 24h · 48h</b></div>
+          <p>Schematic network representation; not a geographic map.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--dark">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">02 · Modelling decision</p><h2>Why this was not treated as a conventional time series</h2><p>The dataset contains hour and season, but no complete timestamp or recoverable chronology. Observations did not necessarily form a continuous sequence, so the project was treated as supervised regression.</p></div>
+        <div class="forecast-decision-split reveal">
+          <article><span>Conventional time series</span><b>Requires ordered timestamps and a continuous sequence.</b><p>Rolling validation is meaningful when chronology can be recovered.</p></article>
+          <article><span>Chosen setup</span><b>Supervised regression for separate future-temperature targets.</b><p>Hourly observations, no recoverable chronology and held-out evaluation drove the method choice.</p></article>
+        </div>
+        <p class="forecast-recovery-callout">Using a time-series model is not automatically correct just because the target is in the future.</p>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">03 · Data-quality decisions</p><h2>Data quality decisions before modelling</h2></div>
+        <div class="forecast-decision-grid">
+          <article class="reveal"><strong>1.98%</strong><h3>Missing values</h3><p>150 rows had at least one missing value. Missingness was low and largely unstructured, so incomplete rows were removed.</p></article>
+          <article class="reveal delay-1"><strong>Retained</strong><h3>Outliers</h3><p>Extreme wind, precipitation, sunshine and radiation values were often physically plausible. RobustScaler was considered without deleting them.</p></article>
+          <article class="reveal delay-2"><strong>0</strong><h3>Duplicates</h3><p>No duplicated observations were found, so no duplicate-removal step was required.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--soft">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">04 · Data structure</p><h2>Many signals, repeated across station contexts.</h2><p>Measurements of the same meteorological quantity across nearby stations were often strongly correlated.</p></div>
+        <div class="forecast-signal-layout reveal">
+          <div class="forecast-signal-tags"><span>Temperature</span><span>Humidity</span><span>Radiation</span><span>Precipitation</span><span>Pressure</span><span>Wind</span><span>Sunshine</span><span>Hour</span><span>Season</span></div>
+          <div class="forecast-signal-code"><code>tre200h0_GVE</code><code>tre200h0_BAS</code><code>tre200h0_DAV</code><span>Same physical quantity · different station context</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">05 · Feature engineering</p><h2>Adding useful structure without unnecessary complexity</h2></div>
+        <div class="forecast-feature-flow reveal">
+          <article><span>01</span><h3>Cyclical hour encoding</h3><p>sin(hour) and cos(hour) preserve the fact that hour 23 is close to hour 0.</p><b>0–23</b></article>
+          <article><span>02</span><h3>Absolute temperature change</h3><p>Current Bern temperature minus its 24-hour lag captures recent temperature variability.</p><b>Δ 24h</b></article>
+          <article><span>03</span><h3>Regional average</h3><p>Ten station temperatures became a regional average to capture broader conditions and reduce local noise.</p><b>10 → 1</b></article>
+        </div>
+        <div class="forecast-rejection reveal"><div><strong>Features explored, tested and rejected</strong><p>Only a small subset of engineered features was retained because additional complexity produced diminishing returns.</p></div><ul><li>Season cyclical encoding → negligible additional benefit</li><li>Altitude difference → no noticeable improvement</li><li>Temperature–humidity interaction → not retained after combined evaluation</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--dark">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">06 · Model ladder</p><h2>From transparent baseline to non-linear ensemble</h2></div>
+        <ol class="forecast-model-ladder reveal">
+          <li><span>01</span><div><h3>Linear Regression</h3><p>Transparent baseline for interpretability and benchmarking.</p></div><small>Global linear relationships</small></li>
+          <li><span>02</span><div><h3>KNN</h3><p>Local non-linear alternative with flexible neighbourhood predictions.</p></div><small>Scale-sensitive and less stable in sparse regions</small></li>
+          <li class="forecast-model-ladder__best"><span>03</span><div><h3>Boosting</h3><p>Non-linear tree ensemble for interactions, accuracy and feature importance.</p></div><small>Best-performing family across all horizons</small></li>
+        </ol>
+        <p class="forecast-model-axis">Increasing flexibility <i aria-hidden="true"></i> Decreasing simplicity</p>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--soft">
+      <div class="container forecast-evaluation-layout reveal">
+        <div><p class="eyebrow">Experimental setup</p><h2>Evaluation designed for interpretable error.</h2><p>80/20 train-test split · scaling inside the modelling pipeline · cross-validation for hyperparameters · held-out test evaluation · three separate forecast targets.</p></div>
+        <aside><span>Evaluation metric</span><strong>MAE</strong><b>Average absolute difference between predicted and observed temperature</b><small>Reported in degrees Celsius, making error directly interpretable.</small></aside>
+      </div>
+    </section>
+
+    <section id="forecast-results" class="section forecast-recovery-section">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">07 · Model comparison</p><h2>Model performance across forecast horizons</h2><p>Test Mean Absolute Error in degrees Celsius. Lower values indicate better forecasts.</p></div>
+        <div class="forecast-results-explorer reveal" data-forecast-explorer>
+          <div class="forecast-results-explorer__top"><div><span>Compare a horizon</span><div class="forecast-results-explorer__buttons" role="group" aria-label="Select forecast horizon"><button class="is-active" type="button" data-horizon="12" aria-pressed="true">12h</button><button type="button" data-horizon="24" aria-pressed="false">24h</button><button type="button" data-horizon="48" aria-pressed="false">48h</button></div></div><p>Scenario values from the project report. Shorter bars indicate lower test MAE.</p></div>
+          <div class="forecast-results-explorer__bars" aria-live="polite"><div><span>Linear Regression</span><i data-model="linear"><b>2.06°C</b></i></div><div><span>KNN</span><i data-model="knn"><b>2.06°C</b></i></div><div class="is-best"><span>Boosting</span><i data-model="boosting"><b>1.51°C</b></i></div></div>
+          <div class="forecast-results-explorer__insight"><strong data-forecast-insight-title>12h · Boosting has the lowest test MAE.</strong><span data-forecast-insight-copy>At the shortest horizon, Boosting achieved approximately 1.51°C MAE.</span></div>
+        </div>
+        <div class="forecast-results-table-wrap reveal"><table><caption>Full test MAE comparison (°C); lower is better.</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Linear Regression</th><th scope="col">KNN</th><th scope="col">Boosting</th></tr></thead><tbody><tr><th scope="row">12h</th><td>2.06</td><td>2.06</td><td>1.51</td></tr><tr><th scope="row">24h</th><td>2.01</td><td>2.15</td><td>1.87</td></tr><tr><th scope="row">48h</th><td>2.54</td><td>2.56</td><td>2.40</td></tr></tbody></table></div>
+        <div class="forecast-results-takeaways reveal"><span>Boosting consistently achieved the lowest MAE.</span><span>Forecasting became harder from 12h to 48h.</span><span>Linear Regression remained a useful transparent benchmark.</span><span>KNN captured local non-linearity but was scale-sensitive.</span></div>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--soft">
+      <div class="container forecast-figure-layout">
+        <div class="reveal"><p class="eyebrow">Actual vs predicted</p><h2>Predictions remain close to observations, while dispersion grows with horizon.</h2><p>The extracted CatBoost chart documents the 12-hour comparison. Greater forecast distance corresponded to greater uncertainty.</p></div>
+        <figure class="forecast-report-figure reveal delay-1"><img src="../assets/images/projects/forecasting/catboost-actual-vs-predicted.png" alt="CatBoost actual versus predicted temperature chart for the 12-hour target"><figcaption>CatBoost actual vs predicted — 12h horizon, extracted from the project report.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section">
+      <div class="container">
+        <div class="forecast-recovery-intro reveal"><p class="eyebrow">Feature importance</p><h2>Short-term forecasts rely more on recent dynamics. Longer horizons rely more on regional context.</h2></div>
+        <div class="forecast-importance-grid reveal" role="table" aria-label="Qualitative feature importance by horizon">
+          <div role="row" class="forecast-importance-grid__head"><span role="columnheader">Signal</span><span role="columnheader">12h</span><span role="columnheader">24h</span><span role="columnheader">48h</span></div>
+          <div role="row"><strong role="rowheader">Current temperature</strong><span>High</span><span>Balanced</span><span>Regional</span></div>
+          <div role="row"><strong role="rowheader">Regional average temperature</strong><span>Supporting</span><span>High</span><span>High</span></div>
+          <div role="row"><strong role="rowheader">Recent temperature change</strong><span>High</span><span>Balanced</span><span>Lower</span></div>
+          <div role="row"><strong role="rowheader">Selected stations, hour, humidity &amp; radiation</strong><span>Temporal</span><span>Balanced</span><span>Spatial</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--dark">
+      <div class="container forecast-error-layout">
+        <div class="reveal"><p class="eyebrow">Error analysis</p><h2>Where the model remained less reliable</h2><p>Prediction errors increased at extreme temperatures; uncertainty grew with horizon; sparse regions were harder for KNN. Accuracy alone does not eliminate forecasting uncertainty.</p></div>
+        <div class="forecast-error-scale reveal delay-1"><div><span>Typical temperature range</span><strong>Tighter predictions</strong></div><div><span>Extreme temperature range</span><strong>Wider error dispersion</strong></div></div>
+      </div>
+    </section>
+
+    <section class="section forecast-recovery-workflow"><div class="container"><p class="eyebrow">Technical workflow</p><ol><li>Raw meteorological data</li><li>Data-quality checks</li><li>Robust preprocessing</li><li>Feature engineering</li><li>Model pipelines</li><li>Cross-validation</li><li>Held-out test</li><li><strong>Diagnostics</strong></li></ol></div></section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--code">
+      <div class="container forecast-code-layout"><div class="reveal"><p class="eyebrow">Selected implementation logic</p><h2>Small pieces of code, tied to a modelling decision.</h2><p>Cyclical encoding makes the proximity between late-night and early-morning hours available to the model.</p></div><pre class="reveal delay-1"><code># cyclical hour encoding
+df["hour_sin"] = np.sin(2 * np.pi * df["hour"] / 24)
+df["hour_cos"] = np.cos(2 * np.pi * df["hour"] / 24)</code></pre></div>
+    </section>
+
+    <section class="section forecast-recovery-section forecast-recovery-section--limits"><div class="container"><div class="forecast-limit-card reveal"><p class="eyebrow">Interpretation and limitations</p><h2>Forecasting performance depends on more than model complexity.</h2><p>Understanding data structure, engineering meaningful features and evaluating uncertainty across horizons were as important as selecting a model. Results are specific to this university project setup, not an operational weather forecast.</p></div></div></section>
+  </main>
+  <footer><div class="container footer-wrap"><div><strong>Giovanni Carta</strong><span>Business Analytics Portfolio</span></div><p>© <span id="year"></span></p></div></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

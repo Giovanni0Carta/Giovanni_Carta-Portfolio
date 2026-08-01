@@ -1,0 +1,38 @@
+/* Compact, accessible tool attribution in project visuals. */
+.project-visual .project-tool-icons {
+  position: absolute;
+  z-index: 4;
+  right: 26px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  background: rgba(18, 25, 28, .62);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .16);
+  backdrop-filter: blur(8px);
+}
+
+.project-tool-icons img, .project-tool-icons .tool-tableau {
+  display: block;
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+.project-tool-icons .tool-sql-mark { width: 28px; height: 24px; }
+.project-tool-icons .tool-sql-mark { filter: brightness(0) invert(1); }
+.project-tool-icons .tool-tableau-lockup { display: block; width: 104px; height: 27px; }
+.project-tool-icons .tool-dax-mark { color: #f0c84b; font: 800 10px/1 Manrope, sans-serif; letter-spacing: .05em; }
+.project-visual:hover .project-tool-icons { border-color: rgba(169, 213, 229, .46); }
+.forecast-visual .visual-stat { right: 112px; }
+
+@media (max-width: 620px) {
+  .project-visual .project-tool-icons { right: 18px; bottom: 18px; gap: 7px; min-height: 35px; padding: 6px 8px; }
+  .project-tool-icons img, .project-tool-icons .tool-tableau { width: 21px; height: 21px; }
+  .project-tool-icons .tool-sql-mark { width: 25px; height: 22px; }
+  .project-tool-icons .tool-tableau-lockup { width: 88px; height: 23px; }
+  .forecast-visual .visual-stat { right: 88px; }
+}

@@ -1,0 +1,35 @@
+/* Minimal academic attribution inside homepage project cards. */
+.project-meta-aside {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.project-university-logo {
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0) invert(1);
+  opacity: .9;
+}
+
+.project-university-logo.unige {
+  width: 124px;
+  height: 46px;
+  filter: none;
+  opacity: 1;
+}
+.project-university-logo.pisa { width: 54px; height: 54px; }
+
+.featured-project:hover .project-university-logo { opacity: .96; }
+
+@media (max-width: 620px) {
+  .project-meta { gap: 10px; }
+  .project-meta-aside { gap: 7px; }
+  .project-university-logo.unige { width: 100px; height: 37px; }
+  .project-university-logo.pisa { width: 44px; height: 44px; }
+}

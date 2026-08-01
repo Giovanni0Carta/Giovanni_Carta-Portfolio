@@ -1,0 +1,48 @@
+/* A shared, quiet sense of movement across homepage project visuals. */
+@keyframes project-mark-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -11px; }
+}
+
+@keyframes project-mark-float-offset {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -11px; }
+}
+
+@keyframes project-orbit-breathe {
+  0%, 100% { opacity: .44; }
+  50% { opacity: .86; }
+}
+
+.ace-project-mark,
+.thesis-core,
+.cromo-project-logo,
+.architecture-project-mark,
+.pharma-card-brand { animation: project-mark-float 6.2s ease-in-out infinite; }
+
+.conjoint-brand-mark { animation: project-mark-float-offset 6.2s ease-in-out infinite; }
+
+.ace-project-arc,
+.cromo-project-visual .cromo-project-grid,
+.conjoint-project-arc,
+.architecture-project-arc,
+.pharma-card-arc { animation: project-orbit-breathe 6.5s ease-in-out infinite; }
+
+.ace-project-arc.arc-two,
+.conjoint-project-arc.arc-two,
+.architecture-project-arc.arc-two,
+.pharma-card-arc-two { animation-delay: -3.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ace-project-mark,
+  .thesis-core,
+  .cromo-project-logo,
+  .architecture-project-mark,
+  .pharma-card-brand,
+  .conjoint-brand-mark,
+  .ace-project-arc,
+  .cromo-project-visual .cromo-project-grid,
+  .conjoint-project-arc,
+  .architecture-project-arc,
+  .pharma-card-arc { animation: none !important; }
+}

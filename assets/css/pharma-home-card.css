@@ -1,0 +1,82 @@
+/* Homepage — original editorial visual for the Pharma / Power BI case. */
+.pharma-project-visual {
+  position: relative !important;
+  min-height: 100%;
+  overflow: hidden !important;
+  isolation: isolate;
+  background: #171717 !important;
+}
+
+.pharma-project-visual::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image: linear-gradient(rgba(169, 213, 229, .065) 1px, transparent 1px), linear-gradient(90deg, rgba(169, 213, 229, .065) 1px, transparent 1px);
+  background-size: 58px 58px;
+  content: "";
+}
+
+.pharma-project-visual::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(circle at 76% 72%, rgba(15, 97, 116, .2), transparent 34%);
+  content: "";
+}
+
+.pharma-card-arc { position: absolute; z-index: 0; display: block; border: 1px solid; border-radius: 50%; pointer-events: none; }
+.pharma-card-arc-one { top: -44%; left: -16%; width: 87%; aspect-ratio: 1; border-color: rgba(167, 214, 230, .42); }
+.pharma-card-arc-two { right: -37%; bottom: -51%; width: 104%; aspect-ratio: 1; border-color: rgba(27, 142, 164, .55); }
+
+.pharma-project-visual .pharma-project-kpi {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  gap: 3px;
+  min-width: 93px;
+  padding: 13px 16px 13px 14px;
+  border-left: 2px solid #a9d5e5;
+  color: #fff;
+  background: rgba(49, 50, 49, .92);
+  box-shadow: none;
+}
+
+.pharma-project-visual .pharma-project-kpi b { color: #fff; font: 800 24px/1 Manrope, sans-serif; letter-spacing: -.05em; }
+.pharma-project-visual .pharma-project-kpi span { color: rgba(255,255,255,.72); font: 600 9px/1.1 "DM Sans", sans-serif; letter-spacing: .02em; }
+.pharma-card-stat-top { top: 13%; left: 10%; }
+.pharma-card-stat-bottom { right: 9%; bottom: 19%; border-color: #7dc3d6 !important; }
+
+.pharma-card-brand {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  min-width: 210px;
+  color: #fff;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.pharma-card-brand-icon { display: grid; width: 67px; height: 67px; margin-bottom: 16px; place-items: center; color: #a9d5e5; }
+.pharma-card-brand-icon svg { width: 100%; height: 100%; overflow: visible; }
+.pharma-card-brand-kicker { color: #a9d5e5; font: 800 10px/1 Manrope, sans-serif; letter-spacing: .24em; }
+.pharma-card-brand strong { margin: 7px 0 8px; color: #fff; font: 800 clamp(27px, 3vw, 39px)/.91 Manrope, sans-serif; letter-spacing: -.075em; }
+.pharma-card-brand em { color: #7dc3d6; font: 800 10px/1 Manrope, sans-serif; font-style: normal; letter-spacing: .2em; }
+
+.pharma-card-signal { position: absolute; z-index: 2; bottom: 33px; left: 10%; display: flex; align-items: center; gap: 5px; color: rgba(255,255,255,.74); }
+.pharma-card-signal i { display: block; width: 17px; height: 3px; background: #48bed7; }
+.pharma-card-signal i:nth-child(2) { background: #a9d5e5; }
+.pharma-card-signal i:nth-child(3) { background: #fff; }
+.pharma-card-signal span { margin-left: 3px; font: 800 9px/1 Manrope, sans-serif; letter-spacing: .1em; }
+
+@media (max-width: 760px) {
+  .pharma-project-visual { min-height: 390px; }
+  .pharma-card-brand { min-width: 190px; }
+  .pharma-card-brand strong { font-size: 33px; }
+  .pharma-card-stat-top { top: 9%; left: 8%; }
+  .pharma-card-stat-bottom { right: 8%; bottom: 17%; }
+}
+
+@media (prefers-reduced-motion: reduce) { .pharma-project-visual *, .pharma-project-visual::before, .pharma-project-visual::after { transition: none !important; animation: none !important; } }

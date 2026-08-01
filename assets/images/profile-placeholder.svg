@@ -1,0 +1,8 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="1100" fill="#101627"/>
+<circle cx="450" cy="380" r="175" fill="#29334E"/>
+<path d="M170 1030C190 750 290 620 450 620C610 620 710 750 730 1030H170Z" fill="#29334E"/>
+<circle cx="450" cy="480" r="330" stroke="url(#paint0)" stroke-width="2" stroke-dasharray="12 20" opacity=".7"/>
+<text x="450" y="1010" fill="#AAB6FF" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">ADD YOUR PHOTO: giovanni-profile.jpg</text>
+<defs><linearGradient id="paint0" x1="120" y1="170" x2="780" y2="820" gradientUnits="userSpaceOnUse"><stop stop-color="#7C8CFF"/><stop offset="1" stop-color="#45E0B7"/></linearGradient></defs>
+</svg>
