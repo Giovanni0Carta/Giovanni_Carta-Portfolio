@@ -361,3 +361,90 @@
   .pharma-case-redesign .pharma-case-mini-table > div { min-height: 0; }
   .pharma-case-redesign .pharma-case-hero-process { padding: 16px; }
 }
+
+/* FLAT TO STAR — mobile-only reflow */
+@media (max-width: 720px) {
+  .pharma-case-redesign .pharma-case-transformation > .container {
+    width: calc(100% - 48px);
+    max-width: 100%;
+  }
+
+  .pharma-case-redesign .pharma-case-transformation .pharma-case-section-heading h2 {
+    font-size: clamp(2.5rem,10vw,4rem);
+    line-height: 1.02;
+  }
+
+  .pharma-case-redesign .pharma-case-three-acts,
+  .pharma-case-redesign .pharma-case-three-acts > article {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .pharma-case-redesign .pharma-case-flat-block,
+  .pharma-case-redesign .pharma-case-entity-flows,
+  .pharma-case-redesign .pharma-case-schema-mini {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .pharma-case-redesign .pharma-case-flat-block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(min(130px,100%),1fr));
+    gap: 10px;
+  }
+
+  .pharma-case-redesign .pharma-case-flat-block strong {
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+  }
+
+  .pharma-case-redesign .pharma-case-flat-block span {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 9px;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  .pharma-case-redesign .pharma-case-entity-flows span {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0,1fr);
+    gap: 5px;
+    padding: 11px 13px;
+    overflow-wrap: anywhere;
+  }
+
+  .pharma-case-redesign .pharma-case-entity-flows span b {
+    display: block;
+    font-weight: 800;
+  }
+
+  .pharma-case-redesign .pharma-case-schema-mini {
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+    gap: 10px;
+  }
+
+  .pharma-case-redesign .pharma-case-schema-mini span,
+  .pharma-case-redesign .pharma-case-schema-mini strong {
+    width: 100%;
+    min-width: 0;
+    grid-column: 1;
+  }
+
+  .pharma-case-redesign .pharma-case-schema-mini span:nth-of-type(1) { order: 1; }
+  .pharma-case-redesign .pharma-case-schema-mini span:nth-of-type(2) { order: 2; }
+  .pharma-case-redesign .pharma-case-schema-mini span:nth-of-type(4) { order: 3; }
+  .pharma-case-redesign .pharma-case-schema-mini strong { order: 4; }
+  .pharma-case-redesign .pharma-case-schema-mini span:nth-of-type(3) { order: 5; }
+}

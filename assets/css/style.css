@@ -1079,6 +1079,57 @@ body {
   }
 }
 
+/* XIAOMI — mobile-only Choice Model and scatter result correction */
+@media (max-width: 720px) {
+  .conjoint-case .conjoint-device {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+    min-height: 0;
+    align-items: stretch;
+  }
+
+  .conjoint-case .conjoint-device::after {
+    display: none;
+  }
+
+  .conjoint-case .conjoint-decision-core {
+    position: relative;
+    grid-column: 1 / -1;
+    margin: 0 auto;
+  }
+
+  .conjoint-case .conjoint-visual-stat,
+  .conjoint-case .conjoint-visual-stat.stat-one,
+  .conjoint-case .conjoint-visual-stat.stat-two {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .conjoint-case .device-flow {
+    position: static;
+    display: block;
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .conjoint-case .scatter .s5 {
+    z-index: 3;
+    top: 72px;
+    right: 20px;
+    bottom: auto;
+    left: auto;
+    width: 138px;
+    max-width: calc(100% - 40px);
+    overflow: visible;
+    transform: none;
+    white-space: normal;
+    box-sizing: border-box;
+  }
+}
+
 /* ==================================================
    CERTIFICATIONS & CONTINUOUS LEARNING
    ================================================== */
@@ -9070,13 +9121,13 @@ body > footer .footer-wrap > p > span {
   }
 
   #experience .timeline {
-    gap: 28px;
-    padding-left: 44px;
+    gap: 26px;
+    padding-left: 46px;
   }
 
   #experience .timeline::before {
-    top: 8px;
-    bottom: 8px;
+    top: 12px;
+    bottom: 12px;
     left: 10px;
   }
 
@@ -9084,31 +9135,40 @@ body > footer .footer-wrap > p > span {
     position: relative;
     display: block;
     min-height: 0;
-    padding: 42px 0 0;
+    padding: 50px 0 0;
   }
 
   #experience .timeline-node {
     position: absolute;
-    top: 0;
-    left: -42px;
+    top: 14px;
+    left: -44px;
+    display: block;
     width: 17px;
     height: 17px;
+    margin: 0;
+    border: 4px solid #e9f3f5;
+    border-radius: 50%;
+    background: #155b6e;
+    box-shadow: 0 0 0 1px #6baebc, 0 0 0 5px rgba(43, 140, 162, .11);
+    transform: none;
   }
 
   #experience .timeline-node::before {
-    top: 13px;
-    left: 50%;
+    display: none;
   }
 
   #experience .timeline-node-year {
     position: absolute;
-    top: 3px;
-    left: 29px;
+    top: 0;
+    bottom: auto;
+    left: 31px;
     min-width: max-content;
     margin: 0;
-    padding: 4px 8px;
-    background: #fbfdfe;
-    font-size: 17px;
+    padding: 2px 7px;
+    color: #246b7d;
+    background: #edf6f8;
+    font: 800 16px/1 "Manrope", sans-serif;
+    letter-spacing: -.045em;
     transform: none;
   }
 
@@ -9413,6 +9473,57 @@ body > footer .footer-wrap > p > span {
     width: 31px;
     height: 31px;
     max-width: 31px;
+  }
+}
+
+/* XIAOMI — mobile-only Choice Model and scatter result correction */
+@media (max-width: 720px) {
+  .conjoint-case .conjoint-device {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+    min-height: 0;
+    align-items: stretch;
+  }
+
+  .conjoint-case .conjoint-device::after {
+    display: none;
+  }
+
+  .conjoint-case .conjoint-decision-core {
+    position: relative;
+    grid-column: 1 / -1;
+    margin: 0 auto;
+  }
+
+  .conjoint-case .conjoint-visual-stat,
+  .conjoint-case .conjoint-visual-stat.stat-one,
+  .conjoint-case .conjoint-visual-stat.stat-two {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .conjoint-case .device-flow {
+    position: static;
+    display: block;
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .conjoint-case .scatter .s5 {
+    z-index: 3;
+    top: 72px;
+    right: 20px;
+    bottom: auto;
+    left: auto;
+    width: 138px;
+    max-width: calc(100% - 40px);
+    overflow: visible;
+    transform: none;
+    white-space: normal;
+    box-sizing: border-box;
   }
 }
 
