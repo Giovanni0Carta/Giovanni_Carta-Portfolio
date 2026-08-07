@@ -645,6 +645,13 @@ body {
   transform: none;
 }
 
+#main-content > .hero .hero-proof-intro .hero-proof-disclosure {
+  display: block;
+  margin-top: 7px;
+  color: rgba(142, 176, 187, .88);
+  font: 400 12px/1.4 "DM Sans", sans-serif;
+}
+
 @media (min-width: 941px) {
   /* Critical first-paint geometry, duplicated here to prevent a layout flash
      before the small portfolio-footprint module is available. */
