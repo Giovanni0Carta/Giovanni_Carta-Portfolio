@@ -217,8 +217,8 @@ if (year) year.textContent = new Date().getFullYear();
 
 // Update these values when a new DataCamp course is added.
 const certificationStats = {
-  completedCourses: 18,
-  trainingHours: 64
+  completedCourses: 19,
+  trainingHours: 67
 };
 
 const certificationStatsBlock = document.querySelector('[data-certification-stats]');
