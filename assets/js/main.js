@@ -215,6 +215,20 @@ if ('IntersectionObserver' in window && sections.length && sectionLinks.length) 
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
 
+// Update these values when a new DataCamp course is added.
+const certificationStats = {
+  completedCourses: 18,
+  trainingHours: 64
+};
+
+const certificationStatsBlock = document.querySelector('[data-certification-stats]');
+if (certificationStatsBlock) {
+  document.querySelectorAll('[data-certification-course-count]').forEach(element => {
+    element.textContent = certificationStats.completedCourses;
+  });
+  certificationStatsBlock.querySelector('[data-certification-training-hours]').textContent = certificationStats.trainingHours;
+}
+
 const conjointLab = document.querySelector('[data-conjoint-lab]');
 if (conjointLab) {
   const projectScenarios = {
